@@ -46,9 +46,9 @@ en: &DEFAULT_EN
   comment_error_msg          : "Sorry, there was an error with your submission. Please make sure all required fields have been completed and try again."
   loading_label              : "Loading..."
   search_label_text          : "Enter your search term..."
-  search_placeholder_text    : "请输入"
+  search_placeholder_text    : "Enter"
   search_algolia_no_results  : "No results"
-  results_found              : "无结果"
+  results_found              : "No result(s)"
   back_to_top                : "Back to top"
 en-US:
   <<: *DEFAULT_EN
