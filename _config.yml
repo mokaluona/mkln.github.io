@@ -88,6 +88,10 @@ naver_site_verification  :
 yandex_site_verification :
 baidu_site_verification  :
 
+# 新添加
+image_dir                : "/attachments/image/blog_attach"
+
+
 # Social Sharing
 #facebook:
 #  username               :
@@ -167,6 +171,8 @@ footer:
 include:
   - .htaccess
   - _pages
+  - attachments
+  - attachments/image/blog_attach
 exclude:
   - "*.sublime-project"
   - "*.sublime-workspace"
