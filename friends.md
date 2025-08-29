@@ -42,7 +42,7 @@ layout: collection
     <div class="friend-meta">
       {% if friend.date %}
       <span class="friend-date">
-        <i class="fas fa-calendar-alt"></i> 添加于 {{ friend.date }}
+        <i class="fas fa-calendar-alt"></i> 添加于<br> {{ friend.date }}
       </span>
       {% endif %}
       
@@ -253,16 +253,16 @@ layout: collection
 
 /* ===== 申请区域 ===== */
 .friend-apply {
-  background: linear-gradient(135deg, #f9fbe7,rgb(195, 244, 233));
+  background: linear-gradient(135deg,rgb(195, 244, 233), #88c3e6ff);
   border-radius: 12px;
   padding: 25px;
   margin-top: 30px;
-  border: 1px dashed rgb(149, 202, 51);
+  border: 1px dashed rgba(51, 197, 202, 1);
 } 
 
 .friend-apply h4 {
   margin-top: 0;
-  color: #827717;
+  color: #327214ff;
   display: flex;
   align-items: center;
 }
