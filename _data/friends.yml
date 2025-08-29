@@ -12,6 +12,12 @@
       desc: "一个奇怪的人"
       avatar: "/attachments/image/friends/Delusion2333.png"
       date: "2025-07-26"
+    
+    - name: "蒟蒻芦苇"
+      url: "https://konjacreeds.github.io/"
+      desc: "站主是高中生哦"
+      avatar: "/attachments/image/friends/luo10.jpg"
+      date: "2025-08-29"
 
 # # 技术类博客
 # - category: "技术博客"
