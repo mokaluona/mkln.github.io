@@ -1,11 +1,9 @@
 <!-- _includes/img.html -->
-<figure>
+<figure class="{% if include.class %}{{ include.class }}{% endif %}">
   <img src="{{ site.image_dir }}/{{ include.src }}"
        alt="{% if include.alt %}{{ include.alt }}{% endif %}"
-       class="{% if include.class %}{{ include.class }}{% endif %}"
        {% if include.loading %}loading="{{ include.loading }}"{% endif %}>
   {% if include.caption %}
   <figcaption>{{ include.caption | markdownify }}</figcaption>
   {% endif %}
 </figure>
-

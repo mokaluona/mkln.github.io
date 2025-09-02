@@ -7,3 +7,92 @@ search: false
 
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
 @import "minimal-mistakes"; // main partials
+
+
+img.small {
+  max-width: 300px;
+  width: auto;
+  height: auto;
+  display: block;
+  margin: 1em auto;
+  border-radius: 8px;
+}
+
+img.tiny {
+  max-width: 150px;
+  width: auto;
+  height: auto;
+  display: block;
+  margin: 1em auto;
+  border-radius: 6px;
+}
+
+// 浮动图片（可选）
+img.left {
+  max-width: 300px;
+  width: auto;
+  height: auto;
+  float: left;
+  margin: 0 1em 1em 0;
+  border-radius: 8px;
+}
+
+img.right {
+  max-width: 300px;
+  width: auto;
+  height: auto;
+  float: right;
+  margin: 0 0 1em 1em;
+  border-radius: 8px;
+}
+
+// 如果你想让 figure 支持这些类（更灵活）
+figure.small img,
+figure.tiny img {
+  max-width: 300px;
+  margin: 1em auto;
+}
+
+figure.tiny img {
+  max-width: 150px;
+}
+
+
+// 统一控制 figcaption 位置
+figure figcaption {
+  clear: both;
+  display: block;
+  margin-top: 0.8em;
+  text-align: center;
+  font-size: 0.9em;
+  color: #666;
+}
+
+// 浮动支持
+figure.left {
+  float: left;
+  margin: 0 1em 1em 0;
+}
+
+figure.right {
+  float: right;
+  margin: 0 0 1em 1em;
+}
+
+// 小图限制宽度
+figure.left img,
+figure.right img,
+img.small,
+img.left,
+img.right {
+  max-width: 300px;
+  width: auto;
+  height: auto;
+  border-radius: 8px;
+}
+// 确保 figure 内容不绕图
+figure::after {
+  content: "";
+  display: table;
+  clear: both;
+}
