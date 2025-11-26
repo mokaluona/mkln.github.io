@@ -3,7 +3,7 @@ title: 从Dnggentle说起：自恋、痛苦与平庸
 cssclasses:
   - 日记
 last_modified_at: 2025-11-27T00:47:00
-date: 2025-11-27
+date: 2025-11-26
 tags:
   - 评论
   - 生活
