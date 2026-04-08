@@ -22,7 +22,7 @@ title_separator          : "-"
 subtitle                 : # site tagline that appears below site title in masthead
 name                     : "魔卡洛娜"
 description              : "技术，思考与生活"
-url                      : "www.mkln.online" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
+url                      : "www.mkln.space" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "mokaluona" # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
 teaser                   : "/attachments/image" # path of fallback teaser image, e.g. "/assets/images/500x300.png"
