@@ -203,6 +203,7 @@ layout: collection
   line-height: 1.6;
   margin-bottom: 20px 10px;
   flex-grow: 1;
+  flex-grow: 1;
   font-size: 0.95em;
 }
 
@@ -242,7 +243,7 @@ layout: collection
 }
 
 .friend-link a:hover {
-  background: linear-gradient(135deg, #1976D2, #0d47a1);
+  background: linear-gradient(135deg, #84afdaff, #4b6da0ff);/*“访问页面”选项鼠标选中后的颜色*/
   color: white;
   box-shadow: 0 4px 8px rgba(25, 118, 210, 0.3);
 }
@@ -253,16 +254,16 @@ layout: collection
 
 /* ===== 申请区域 ===== */
 .friend-apply {
-  background: linear-gradient(135deg,rgb(195, 244, 233), #88c3e6ff);
+  background: linear-gradient(135deg, #d8ebf05e,rgba(122, 209, 209, 0.27));  /*交换友链背景颜色*/
   border-radius: 12px;
-  padding: 25px;
+  padding: 25px;  
   margin-top: 30px;
-  border: 1px dashed rgba(51, 197, 202, 1);
+  border: 1px dashed rgba(226, 226, 226, 1);
 } 
 
 .friend-apply h4 {
   margin-top: 0;
-  color: #327214ff;
+  color: #6286a3ff;/*交换友链部分字色*/
   display: flex;
   align-items: center;
 }
