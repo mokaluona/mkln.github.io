@@ -73,6 +73,10 @@
   color: $text-color;
   text-decoration: none;
 
+  &:visited {
+    color: $text-color;
+  }
+
   &:hover {
     color: $link-color-hover;
     text-decoration: underline;
