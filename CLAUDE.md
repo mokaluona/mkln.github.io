@@ -123,13 +123,11 @@ git add -A && git commit -F <提交信息文件>
 
 **不要在某一台单独建 `.gitignore`。** 它是被仓库跟踪的文件，两台共用一份；本地私建会让 `git pull` 直接报 `untracked working tree files would be overwritten by merge` 而卡死。
 
-### Obsidian 配置的同步
+### Obsidian 配置：不进版本库
 
-`_posts/` 是一个 Obsidian vault，vault 配置（`.obsidian/`）**跟着仓库走**，让两台机器的编辑体验一致。但有两个文件排除在外：
+`_posts/` 是一个 Obsidian vault，但**只当查看器用**，两台的 Obsidian 配置各自保留即可。整个 `_posts/.obsidian/` 都在 `.gitignore` 里，**不要「顺手」把它加进版本库**。
 
-- `_posts/.obsidian/workspace.json`、`workspace-mobile.json`——存的是「打开了哪些标签页、面板怎么排」。每台机器各不相同，而且每开关一次 Obsidian 就变一次，跟踪它只会产生无休止的脏状态和冲突。
-
-具体规则写在 `.gitignore` 里，改之前先看那里的注释。
+> 2026-09-13 曾试过同步它，结果 `git push` 被 GitHub 的 push protection 直接拦下：`_posts/.obsidian/plugins/remotely-save/main.js` 里内嵌着 Google OAuth 的 Client ID / Client Secret，而本仓库是**公开**的。教训——公开仓库里第三方插件的目录默认当污染源看，整目录忽略，别只挑几个文件排除。
 
 ## 分支与发布
 
