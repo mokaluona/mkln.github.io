@@ -13,16 +13,14 @@ layout: archive
   <div class="friend-grid">
     {% for friend in section.links %}
     <div class="friend-card">
-      <div class="friend-header">
-        {% if friend.avatar %}
-        <span class="friend-avatar"><img src="{{ friend.avatar }}" alt="{{ friend.name }}"></span>
-        {% elsif friend.icon %}
-        <span class="friend-icon"><i class="{{ friend.icon }}"></i></span>
-        {% else %}
-        <span class="friend-icon"><i class="fas fa-user"></i></span>
-        {% endif %}
-        <a class="friend-name" href="{{ friend.url }}" target="_blank" rel="noopener">{{ friend.name }}</a>
-      </div>
+      {% if friend.avatar %}
+      <span class="friend-avatar"><img src="{{ friend.avatar }}" alt="{{ friend.name }}"></span>
+      {% elsif friend.icon %}
+      <span class="friend-icon"><i class="{{ friend.icon }}"></i></span>
+      {% else %}
+      <span class="friend-icon"><i class="fas fa-user"></i></span>
+      {% endif %}
+      <a class="friend-name" href="{{ friend.url }}" target="_blank" rel="noopener">{{ friend.name }}</a>
       <p class="friend-desc">{{ friend.desc }}</p>
       {% if friend.date %}<span class="friend-date">添加于 {{ friend.date }}</span>{% endif %}
     </div>

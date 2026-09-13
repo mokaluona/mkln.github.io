@@ -23,10 +23,19 @@
   }
 }
 
-/* 竖排卡片：头像+站名在上、简介居中、日期沉底 */
+/* 卡片：桌面竖排（头像+站名一行、简介、日期沉底）；
+   手机上（< $small）翻成横排——头像在左，文字在右，
+   避免宽容器里内容全部挤在左边显得僵硬 */
 .friend-card {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas:
+    "avatar name"
+    "desc   desc"
+    "date   date";
+  column-gap: 0.75em;
+  row-gap: 0.5em;
   padding: 1em;
   border: 1px solid mix(#000, $border-color, 20%);
   border-radius: $border-radius;
@@ -35,18 +44,20 @@
   &:hover {
     border-color: mix(#000, $border-color, 45%);
   }
-}
 
-.friend-header {
-  display: flex;
-  align-items: center;
-  gap: 0.75em;
-  margin-bottom: 0.75em;
+  @include breakpoint(max-width $small) {
+    grid-template-rows: auto auto auto;
+    grid-template-areas:
+      "avatar name"
+      "avatar desc"
+      "avatar date";
+  }
 }
 
 .friend-avatar,
 .friend-icon {
-  flex: 0 0 auto;
+  grid-area: avatar;
+  align-self: center;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -54,6 +65,10 @@
   height: 56px;
   border-radius: 50%;
   overflow: hidden;
+
+  @include breakpoint(max-width $small) {
+    align-self: start;
+  }
 }
 
 .friend-avatar img {
@@ -69,6 +84,8 @@
 }
 
 .friend-name {
+  grid-area: name;
+  align-self: center;
   font-weight: bold;
   color: $text-color;
   text-decoration: none;
@@ -88,13 +105,16 @@
 }
 
 .friend-desc {
-  flex-grow: 1; /* 让卡片等高，日期对齐到底部 */
-  margin: 0 0 0.75em;
+  grid-area: desc;
+  align-self: start; /* 简介贴顶，把空间留给 1fr 行 → 日期沉底 */
+  margin: 0;
   font-size: $type-size-6;
   color: $muted-text-color;
 }
 
 .friend-date {
+  grid-area: date;
+  align-self: end;
   font-size: $type-size-7;
   color: $muted-text-color;
 }
