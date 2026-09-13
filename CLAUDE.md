@@ -169,3 +169,10 @@ git switch main && git pull
 2. `preview` 与 `main` 内容一致时，"正式发布"就等于在 `main` 上 `git push`，不需要额外合并动作。
 3. 洛娜可能长期保留 `preview` 分支，这是正常的，不要"顺手清理"。
 4. 若发现提交误落在 `preview` 上，补救办法是先切回 `main`，再 `git cherry-pick <提交>`（或 `git merge preview`）。
+5. **洛娜的命令与建议也要 review**：她未必清楚代码逻辑和规范操作，所以她的 git 命令、分支/发布说法、实现提议都要审查——发现不对要主动指出并解释为什么，不要默认照做。最终决定仍由她下。
+
+## git 常见坑（回退 / 事务 / 跨机器）
+
+1. **回退已推送的提交用 `git revert`，不要 `git reset` + 强推。** `reset` 改写本地历史；已 push 的提交若 reset 后再 force push，会改写公共历史，另一台 clone 就失同步。`revert` 新增一个「反向」提交，历史不丢、两边安全。**还没 push 的提交才可以用 `reset`。**
+2. **`revert` / `rebase` / `cherry-pick` 是「事务型」操作，跑完必须收尾。** 它们要么完整走完，要么停在半路（sequencer 状态），必须显式 `--continue` 或 `--abort`。每次跑完先看 `git status` 第一行——它会告诉你当前是否在 revert/rebase 中。
+3. **分支是「本地」的，不是全局的。** Windows 上建的分支，Ubuntu 看不到，除非先 `git push origin <分支>` 到 origin，Ubuntu 再 `git fetch`。别在另一台机器上引用一台没 push 的分支名。
