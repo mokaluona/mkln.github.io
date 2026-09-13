@@ -19,6 +19,15 @@ Thumbs.db
 *.swo
 *~
 
+# 编辑器本地配置
+_posts/.obsidian/
+
+# 主题残留（本站未使用）
+docs/_drafts/
+test/
+
+# 注意：_drafts/ 有意不写进来——洛娜要草稿进版本管理，别顺手加
+
 # 备份文件
 *.save
 *.bak
