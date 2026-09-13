@@ -25,8 +25,11 @@
       {% endif %}
     </h2>
     {% include page__meta.html type=include.type %}
-    {% capture _ex %}{% include excerpt-custom.html item=post %}{% endcapture %}
-    {% assign _ex = _ex | default: post.excerpt %}
-    {% if _ex %}<p class="archive__item-excerpt" itemprop="description">{{ _ex | markdownify | strip_html | strip | truncate: 160 }}</p>{% endif %}
+    {% capture _custom_ex %}{% include excerpt-custom.html item=post %}{% endcapture %}
+    {% assign _has_custom = _custom_ex | strip %}
+    {% assign _ex = _has_custom | default: post.excerpt | default: "" %}
+    {% assign _out = _ex | markdownify | strip_html | strip %}
+    {% if _has_custom == "" %}{% assign _out = _out | truncate: 160 %}{% endif %}
+    {% if _out != "" %}<p class="archive__item-excerpt" itemprop="description">{{ _out }}</p>{% endif %}
   </article>
 </div>
