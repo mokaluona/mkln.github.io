@@ -1,0 +1,14 @@
+{%- comment -%}
+  自定义摘要标记解析（纯 Liquid，兼容 GitHub Pages；Pages 不运行自定义 Ruby 插件）。
+  优先级：
+    1. <!--excerpt--> 与 <!--/excerpt--> 之间的内容（可放在任意位置，含段中）
+    2. <!--more--> 之前的内容
+    3. 都没有 → 输出空字符串，由调用方用 | default: 原 excerpt 兜底（即默认首段）
+  用法：{% include excerpt-custom.html item=post %}
+{%- endcomment -%}
+{%- assign _c = include.item.content -%}
+{%- if _c contains "<!--excerpt-->" and _c contains "<!--/excerpt-->" -%}
+{{- _c | split: "<!--excerpt-->" | last | split: "<!--/excerpt-->" | first -}}
+{%- elsif _c contains "<!--more-->" -%}
+{{- _c | split: "<!--more-->" | first -}}
+{%- endif -%}

@@ -13,7 +13,8 @@
 
 {%- assign canonical_url = page.canonical_url | default: page.url | replace: "/index.html", "/" | absolute_url %}
 
-{%- assign seo_description = page.description | default: page.excerpt | default: site.description -%}
+{%- capture _custom_excerpt -%}{%- include excerpt-custom.html item=page -%}{%- endcapture -%}
+{%- assign seo_description = page.description | default: _custom_excerpt | default: page.excerpt | default: site.description -%}
 {%- if seo_description -%}
   {%- assign seo_description = seo_description | markdownify | strip_html | newline_to_br | strip_newlines | replace: '<br />', ' ' | escape_once | strip -%}
 {%- endif -%}

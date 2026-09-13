@@ -22,9 +22,9 @@ title_separator          : "-"
 subtitle                 : # site tagline that appears below site title in masthead
 name                     : "魔卡洛娜"
 description              : "技术，思考与生活"
-url                      : "www.mkln.space" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
+url                      : "https://www.mkln.space" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
-repository               : "mokaluona" # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
+repository               : "mokaluona/mkln.github.io" # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
 teaser                   : "/attachments/image" # path of fallback teaser image, e.g. "/assets/images/500x300.png"
 logo                     : # path of logo image to display in the masthead, e.g. "/assets/images/88x88.png"
 masthead_title           : "" # overrides the website title displayed in the masthead, use " " for no title
@@ -102,10 +102,10 @@ image_dir                : "/attachments/image/blog_attach"
 # - https://developers.google.com/structured-data/customize/social-profiles
 social:
   type                   : # Person or Organization (defaults to Person)
-  name  魔卡洛娜                 : # If the user or organization name differs from the site's name
+  name                   : "魔卡洛娜" # If the user or organization name differs from the site's name
   links: # An array of links to social media profiles
-    - "https://github.com/mokaluona " #github
-    - " https://space.bilibili.com/624761696" #bilibili
+    - "https://github.com/mokaluona" #github
+    - "https://space.bilibili.com/624761696" #bilibili
 # Analytics
 analytics:
   provider               : # false (default), "google", "google-universal", "google-gtag", "custom"
@@ -236,7 +236,7 @@ sass:
 
 # Outputting
 permalink: /:categories/:title/
-timezone: # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+timezone: Asia/Shanghai # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 
 
 # Pagination with jekyll-paginate
