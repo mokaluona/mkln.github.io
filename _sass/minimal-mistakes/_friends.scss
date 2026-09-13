@@ -21,10 +21,6 @@
   @include breakpoint($small) {
     grid-template-columns: repeat(2, 1fr);
   }
-
-  @include breakpoint($large) {
-    grid-template-columns: repeat(3, 1fr);
-  }
 }
 
 /* 竖排卡片：头像+站名在上、简介居中、日期沉底 */
