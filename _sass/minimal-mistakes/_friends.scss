@@ -1,0 +1,101 @@
+/* ==========================================================================
+   Friends page (custom)
+   ========================================================================== */
+
+.friend-intro {
+  margin: 0 0 1.5em;
+  color: $muted-text-color;
+}
+
+.friend-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1em;
+  margin-bottom: 1.5em;
+
+  @include breakpoint($small) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include breakpoint($large) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.friend-card {
+  display: flex;
+  align-items: center;
+  gap: 0.75em;
+  padding: 0.75em;
+  border: 1px solid $border-color;
+  border-radius: $border-radius;
+  transition: $global-transition;
+
+  &:hover {
+    border-color: mix(#000, $border-color, 25%);
+  }
+}
+
+.friend-avatar,
+.friend-icon {
+  flex: 0 0 auto;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.friend-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.friend-icon {
+  border: 1px solid $border-color;
+  color: $muted-text-color;
+  font-size: $type-size-4;
+}
+
+.friend-body {
+  min-width: 0;
+}
+
+.friend-name {
+  font-weight: bold;
+  color: $text-color;
+  text-decoration: none;
+
+  &:hover {
+    color: $link-color-hover;
+    text-decoration: underline;
+  }
+}
+
+.friend-desc {
+  margin: 0.25em 0 0;
+  font-size: $type-size-6;
+  color: $muted-text-color;
+}
+
+.friend-date {
+  display: block;
+  margin-top: 0.25em;
+  font-size: $type-size-7;
+  color: $muted-text-color;
+}
+
+.friend-apply {
+  margin-top: 2em;
+  padding-top: 1em;
+  border-top: 1px solid $border-color;
+  font-size: $type-size-6;
+  color: $muted-text-color;
+
+  p {
+    margin: 0;
+  }
+}
