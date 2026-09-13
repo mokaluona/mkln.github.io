@@ -125,9 +125,15 @@ git add -A && git commit -F <提交信息文件>
 
 ### Obsidian 配置：不进版本库
 
-`_posts/` 是一个 Obsidian vault，但**只当查看器用**，两台的 Obsidian 配置各自保留即可。整个 `_posts/.obsidian/` 都在 `.gitignore` 里，**不要「顺手」把它加进版本库**。
+`_posts/` 和 `_drafts/` 都是 Obsidian vault，但**只当查看器用**，两台的 Obsidian 配置各自保留即可。`.gitignore` 里写的是不带路径的 `.obsidian/`，也就是**任意位置**的 Obsidian 配置目录都不进版本库，**不要「顺手」把它加进版本库**。
 
 > 2026-09-13 曾试过同步它，结果 `git push` 被 GitHub 的 push protection 直接拦下：`_posts/.obsidian/plugins/remotely-save/main.js` 里内嵌着 Google OAuth 的 Client ID / Client Secret，而本仓库是**公开**的。教训——公开仓库里第三方插件的目录默认当污染源看，整目录忽略，别只挑几个文件排除。
+
+### `_drafts/`：只忽略主题样例稿
+
+`_drafts/` 里混着两类东西：洛娜自己写的草稿（**要**进版本库，她会用草稿在两台之间同步）和 Minimal Mistakes 的样例文章（`2010-*`/`2012-*`/`2013-*`/`2016-*`/`2017-*` 开头的那批，只当她翻看的参考，`.gitignore` 里按年份前缀忽略）。**不要忽略整个 `_drafts/`。**
+
+草稿不会被发布到网站：Jekyll 只在加 `--drafts` 参数时才构建 `_drafts/`，GitHub Pages 的传统构建不带这个参数。
 
 ## 分支与发布
 

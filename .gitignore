@@ -19,15 +19,23 @@ Thumbs.db
 *.swo
 *~
 
-# Obsidian：_posts 是个 vault，但 Obsidian 只当查看器用，
-# 两台各自配置即可，整个 .obsidian/ 都不进版本库（别顺手加）。
-_posts/.obsidian/
+# Obsidian：_posts 和 _drafts 都是 vault，但 Obsidian 只当查看器用，
+# 两台各自配置即可。写「.obsidian/」不带路径 = 任意位置的 .obsidian/ 都不进版本库
+# （别顺手加；公开仓库里第三方插件目录被 push protection 拦过）。
+.obsidian/
 
 # 主题残留（本站未使用）
 docs/_drafts/
 test/
 
-# 注意：_drafts/ 有意不写进来——洛娜要草稿进版本管理，别顺手加
+# 主题演示草稿：_drafts/ 里那批 Minimal Mistakes 样例文章（2010/2012/2013/
+# 2016/2017 年份开头的）只当参考翻看，不进版本库。
+# 注意：整个 _drafts/ 不要忽略——洛娜自己写的草稿要进版本管理、要跨机器同步。
+_drafts/2010-*
+_drafts/2012-*
+_drafts/2013-*
+_drafts/2016-*
+_drafts/2017-*
 
 # 备份文件
 *.save
