@@ -19,8 +19,11 @@ Thumbs.db
 *.swo
 *~
 
-# 编辑器本地配置
-_posts/.obsidian/
+# Obsidian：_posts 是一个 vault，vault 配置跟着仓库走，让 Windows / Ubuntu 两台一致。
+# 但工作区布局（打开了哪些标签页、面板怎么排）是每台机器各自的，
+# 而且每开关一次 Obsidian 就变一次，跟踪它只会产生无休止的脏状态，必须排除。
+_posts/.obsidian/workspace.json
+_posts/.obsidian/workspace-mobile.json
 
 # 主题残留（本站未使用）
 docs/_drafts/

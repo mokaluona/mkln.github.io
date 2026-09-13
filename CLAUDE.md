@@ -19,6 +19,7 @@
 5. **`locale` 是 `"China"`**（非标准 BCP-47 标签）。这会导致 `<html lang="China">` 且 UI 文案回落到英文——**这是洛娜的明确选择，不要"顺手修正"**。
 6. **提交身份**：`mokaluona <mokaluona@outlook.com>`。**只本地 commit，push 由洛娜本人执行**，不要尝试处理她的 GitHub 凭据。
 7. 根目录 `index.md` 是唯一首页。曾存在重复的 `index.html`（含 `author_profile: true`，因与 `index.md` 抢同一目标路径而未生效），已删除——**不要重新加回**。
+8. **Windows 和 Ubuntu 两个克隆都能往 `main` 提交**（后者写文章兼预览）。所以**动手前必须先 `git pull`**，推之前先 `git pull --rebase`——详见下文「两台机器的分工与同步」。
 
 ## 摘要机制（本项目唯一的核心自定义逻辑）
 
@@ -102,6 +103,33 @@ git add -A && git commit -F <提交信息文件>
 ```
 
 提交完成后，请洛娜在 `D:\MY_WORKSPACE\mkln.github.io` 自行执行 `git push`。
+
+## 两台机器的分工与同步
+
+| 机器 | 路径 | 职责 |
+|---|---|---|
+| **Windows** | `D:\MY_WORKSPACE\mkln.github.io` | **改代码**——主题、样式、配置、文档。AI 在这里动手 |
+| **Ubuntu** | `~/mkln-blog` | **写文章 + 发布前预览**（跑 `jekyll serve`） |
+| **GitHub** | `origin` | 唯一的交汇点。只有 `main` 会被 Pages 发布 |
+
+**两个克隆都能往 `main` 提交**（文章两边都可能改），所以同步只能靠纪律：
+
+1. **动手前先 `git pull`。** 在陈旧的基础上提交，两边就会各走各的，之后再推就互相挡住。
+2. **推之前先 `git pull --rebase` 再 `git push`。** 免得攒出一堆无谓的合并提交。
+3. **`preview` 上永远不提交**（它只是 `main` 的镜像，见下一节）。
+4. **改完尽快推，别让提交躺在本地过夜。** 未提交/未推送的本地状态是最危险的中间态——它会在 `git status` 里一直挂着，切分支还会被带着走。
+
+> 踩过的坑：曾有一处 `M _posts/2026-4-26-练笔《吸烟有害健康》.md` 在 Ubuntu 侧漂了很久，两边状态不一致，最后只能人工判断该丢还是该留。
+
+**不要在某一台单独建 `.gitignore`。** 它是被仓库跟踪的文件，两台共用一份；本地私建会让 `git pull` 直接报 `untracked working tree files would be overwritten by merge` 而卡死。
+
+### Obsidian 配置的同步
+
+`_posts/` 是一个 Obsidian vault，vault 配置（`.obsidian/`）**跟着仓库走**，让两台机器的编辑体验一致。但有两个文件排除在外：
+
+- `_posts/.obsidian/workspace.json`、`workspace-mobile.json`——存的是「打开了哪些标签页、面板怎么排」。每台机器各不相同，而且每开关一次 Obsidian 就变一次，跟踪它只会产生无休止的脏状态和冲突。
+
+具体规则写在 `.gitignore` 里，改之前先看那里的注释。
 
 ## 分支与发布
 
