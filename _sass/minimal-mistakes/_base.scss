@@ -67,15 +67,35 @@ small,
 
 p {
   margin: 0 0 $indent-var;
-  text-indent: 1.3em;
-  
+
   &:first-child {
     margin-top: 0;
   }
-  
+
   &:last-child {
     margin-bottom: 0;
   }
+}
+
+/* 段首空两格：只作用于正文段落。
+   原先缩进直接挂在上面这个全局 p 上，导致 .page__meta（阅读时长）、
+   .archive__item-excerpt（列表摘要）等非正文段落也被缩进。
+   正文容器按布局分两类：single/splash 布局用 .page__content，
+   archive/home/posts/search 布局用 .archive（列表项里的摘要由 > 排除）。
+   想改成严格意义的「两格」，把下面的 1.3em 换成 2em。 */
+.page__content p:not([class*="notice"]),
+.archive > p,
+.archive blockquote p {
+  text-indent: 1.3em;
+}
+
+/* text-indent 是「可继承」属性。图标 <i> 被 Font Awesome 设成 inline-block，
+   会把继承到的缩进量用在它自己那个 18.75px 宽的小行框里，字形因此被挤出框外、
+   压到紧随其后的文字上（表现就是「图标和文字重叠」）。
+   显式清零，避免正文里出现内联图标时重演。 */
+.page__content i,
+.archive i {
+  text-indent: 0;
 }
 
 u,
