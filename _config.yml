@@ -203,6 +203,7 @@ exclude:
   - /test # ignore Minimal Mistakes /test
   - CLAUDE.md # 给 AI 的仓库维护说明，不发布
   - 写作说明.md # 给作者的摘要标记说明，不发布
+  - 待解决问题.md # 维护待办清单，不发布
 keep_files:
   - .git
   - .svn
