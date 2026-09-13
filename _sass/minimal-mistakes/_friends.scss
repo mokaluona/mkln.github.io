@@ -1,0 +1,108 @@
+/* ==========================================================================
+   友情链接页（friends.md）
+   与 Minimal Mistakes 默认 skin 对齐：只用主题变量、扁平、无渐变/阴影/上浮。
+   ========================================================================== */
+
+/* 外层命名空间：把正文包起来，避开 `.archive > p` 的段首缩进 */
+.friend-page {
+}
+
+.friend-intro {
+  margin: 0 0 1.5em;
+  color: $muted-text-color;
+}
+
+.friend-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1em;
+  margin-bottom: 1.5em;
+
+  @include breakpoint($small) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include breakpoint($large) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* 竖排卡片：头像+站名在上、简介居中、日期沉底 */
+.friend-card {
+  display: flex;
+  flex-direction: column;
+  padding: 1em;
+  border: 1px solid $border-color;
+  border-radius: $border-radius;
+  transition: $global-transition;
+
+  &:hover {
+    border-color: mix(#000, $border-color, 25%);
+  }
+}
+
+.friend-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75em;
+  margin-bottom: 0.75em;
+}
+
+.friend-avatar,
+.friend-icon {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.friend-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.friend-icon {
+  border: 1px solid $border-color;
+  color: $muted-text-color;
+  font-size: $type-size-4;
+}
+
+.friend-name {
+  font-weight: bold;
+  color: $text-color;
+  text-decoration: none;
+
+  &:hover {
+    color: $link-color-hover;
+    text-decoration: underline;
+  }
+}
+
+.friend-desc {
+  flex-grow: 1; /* 让卡片等高，日期对齐到底部 */
+  margin: 0 0 0.75em;
+  font-size: $type-size-6;
+  color: $muted-text-color;
+}
+
+.friend-date {
+  font-size: $type-size-7;
+  color: $muted-text-color;
+}
+
+.friend-apply {
+  margin-top: 1em;
+  padding-top: 1em;
+  border-top: 1px solid $border-color;
+  color: $muted-text-color;
+  font-size: $type-size-6;
+
+  p {
+    margin: 0;
+  }
+}
