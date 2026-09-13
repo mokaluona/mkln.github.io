@@ -61,6 +61,21 @@ Liquid 中**只有 `nil` 和 `false` 为假；空字符串 `""` 是 truthy**。
 
 `| default:` 过滤器**不受此影响**（按 `empty?` 判断，空串会正确回落），可以放心使用。
 
+## 正文段首缩进（自定义）
+
+洛娜要的「段首空两格」实现在 `_sass/minimal-mistakes/_base.scss`：
+
+```scss
+.page__content p:not([class*="notice"]),
+.archive > p,
+.archive blockquote p { text-indent: 1.3em; }
+```
+
+1. **必须按正文容器限定，绝不能挂回裸 `p`。** 裸 `p` 会波及所有非正文段落：`.page__meta`（阅读时长、标签、分类、更新日期）、`.archive__item-excerpt`（列表摘要）、侧栏作者简介等。
+2. **正文容器有两种**：`.page__content`（single/splash 布局）与 `.archive`（archive/home/posts/search 布局，about 页也在内）。`.archive` 用直接子选择器 `>` 是为了避开嵌套在列表项里的 `.archive__item-excerpt`。
+3. **`.page__content i / .archive i { text-indent: 0 }` 这条守卫不能删。** `text-indent` 是**可继承**属性，而 Font Awesome 图标 `<i>` 是 `display:inline-block`，会把继承到的缩进量用在自身那 18.75px 宽的行框里，字形被挤出框外、压到后面的文字上——表现就是「图标和文字重叠」（如 `⏱ess than 1 minute read`）。删掉守卫，正文里一出现内联图标就会重演。
+4. 当前缩进量 **1.3em**（沿用原值）。严格意义的「两格」是 `2em`，改这一个数字即可（注意别动 `$indent-var`，它同时控制段间距）。
+
 ## 站点配置要点
 
 - `url` 必须带协议（`https://www.mkln.space`）。缺协议会污染 canonical、`og:url`、sitemap、JSON-LD 与页脚链接。
