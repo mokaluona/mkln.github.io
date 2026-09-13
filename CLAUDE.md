@@ -87,3 +87,38 @@ git add -A && git commit -F <提交信息文件>
 ```
 
 提交完成后，请洛娜在 `D:\MY_WORKSPACE\mkln.github.io` 自行执行 `git push`。
+
+## 分支与发布
+
+- **`main`** 是唯一的发布分支。GitHub Pages 只构建 `main`（分支根目录），**任何其他分支推上去都不会被发布**。
+- **`preview`** 是洛娜"发布前先在 Ubuntu 里看一遍"用的预览分支，**它永远只是 `main` 的镜像，不要在它上面提交任何东西**。
+- 远端另有一个历史遗留分支 `origin/master`（早期默认分支），与现行流程无关，**不要动**。
+
+### 预览 → 发布流程
+
+```bash
+# 1. Windows 本地：把 main 推成远端的 preview，供 Ubuntu 预览
+git push origin main:preview
+
+# 2. Ubuntu 虚拟机：拉下来起服务查看
+git fetch origin && git switch preview
+bundle exec jekyll serve --livereload --host=0.0.0.0
+
+# 3. 确认页面没问题后，Windows 本地正式发布（必须先确认在 main 上）
+git branch --show-current      # 必须输出 main
+git push
+
+# 4. Ubuntu 里切回主干并同步
+git switch main && git pull
+```
+
+刷新 preview 若报 non-fast-forward（说明 `main` 被改写而非新增提交），用 `git push --force origin main:preview`——preview 从不被直接修改，强制推是安全的。
+
+删除预览分支：`git push origin --delete preview`，再 `git branch -d preview`。
+
+### 给 AI 的硬性提醒
+
+1. **提交前先 `git branch --show-current` 确认在 `main` 上**，不要往 `preview` 提交。
+2. `preview` 与 `main` 内容一致时，"正式发布"就等于在 `main` 上 `git push`，不需要额外合并动作。
+3. 洛娜可能长期保留 `preview` 分支，这是正常的，不要"顺手清理"。
+4. 若发现提交误落在 `preview` 上，补救办法是先切回 `main`，再 `git cherry-pick <提交>`（或 `git merge preview`）。
