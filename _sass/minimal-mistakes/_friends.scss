@@ -35,7 +35,7 @@
     "avatar date";
   column-gap: 0.75em;
   row-gap: 0.5em;
-  padding: 1.5em 1em; /* 上下多留白 */
+  padding: 1.5em 1em 1.5em 1.75em; /* 上 右 下 左：左侧多留白（1.75em ≈ 28px），与日期右侧内缩对称 */
   border: 1px solid mix(#000, $border-color, 10%);
   border-radius: $border-radius;
   transition: $global-transition;
@@ -119,13 +119,13 @@
 .friend-date {
   grid-area: date;
   align-self: end;
-  justify-self: end; /* 手机：日期靠右下角 */
-  margin-right: 1em; /* 再往左挪一点，不贴边 */
+  justify-self: end; /* 两端都靠右下角 */
+  margin-right: 1em; /* 手机：不贴边，距卡片右边缘约 28px */
   font-size: $type-size-7;
   color: $muted-text-color;
 
   @include breakpoint($small) {
-    justify-self: start; /* 桌面：回到左对齐，此处右外边距无影响 */
+    margin-right: 0; /* 桌面：卡片内边距已是 1em，右对齐到内容边缘 */
   }
 }
 
