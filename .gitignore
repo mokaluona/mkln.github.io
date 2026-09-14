@@ -37,6 +37,11 @@ _drafts/2013-*
 _drafts/2016-*
 _drafts/2017-*
 
+# 本地个人文档：术语表.md 只在 Windows 本地翻看，不进版本库。
+# 注意区分：CLAUDE.md / 写作说明.md / 待解决问题.md / CHANGELOG.md 是**要**进版本库的，
+# 它们靠 _config.yml 的 exclude 阻止发布。别把它们的模式也写进这里。
+术语表.md
+
 # 备份文件
 *.save
 *.bak
