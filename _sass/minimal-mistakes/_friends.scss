@@ -14,29 +14,28 @@
 
 .friend-grid {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 1em;
+  grid-template-columns: repeat(2, 1fr); /* 手机与桌面一致：始终两列 */
+  gap: 0.75em;
   margin-bottom: 1.5em;
 
   @include breakpoint($small) {
-    grid-template-columns: repeat(2, 1fr);
+    gap: 1em;
   }
 }
 
-/* 卡片：桌面竖排（头像+站名一行、简介、日期沉底）；
-   手机上（< $small）翻成横排——头像在左，文字在右，
-   避免宽容器里内容全部挤在左边显得僵硬 */
+/* 卡片：始终两列。手机上（< $small）头像居上、文字在下；
+   桌面上头像与站名并排，简介与日期占满整行、日期沉底 */
 .friend-card {
   display: grid;
-  grid-template-columns: auto 1fr;
-  grid-template-rows: auto 1fr auto;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto 1fr auto;
   grid-template-areas:
-    "avatar name"
-    "desc   desc"
-    "date   date";
-  column-gap: 0.75em;
+    "avatar"
+    "name"
+    "desc"
+    "date";
   row-gap: 0.5em;
-  padding: 1em;
+  padding: 0.75em;
   border: 1px solid mix(#000, $border-color, 10%);
   border-radius: $border-radius;
   transition: $global-transition;
@@ -45,29 +44,33 @@
     border-color: mix(#000, $border-color, 45%);
   }
 
-  @include breakpoint(max-width $small) {
-    grid-template-rows: auto auto auto;
+  @include breakpoint($small) {
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto 1fr auto;
     grid-template-areas:
       "avatar name"
-      "avatar desc"
-      "avatar date";
+      "desc   desc"
+      "date   date";
+    column-gap: 0.75em;
+    padding: 1em;
   }
 }
 
 .friend-avatar,
 .friend-icon {
   grid-area: avatar;
-  align-self: center;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 56px;
-  height: 56px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   overflow: hidden;
 
-  @include breakpoint(max-width $small) {
-    align-self: start;
+  @include breakpoint($small) {
+    align-self: center;
+    width: 56px;
+    height: 56px;
   }
 }
 
