@@ -35,7 +35,7 @@
     "avatar date";
   column-gap: 0.75em;
   row-gap: 0.5em;
-  padding: 1.5em 1em 1.5em 1.75em; /* 上 右 下 左：左侧多留白（1.75em ≈ 28px），与日期右侧内缩对称 */
+  padding: 1.5em 1em 1.5em 1.25em; /* 上 右 下 左：左侧 1.25em = 手机根字号 16px 下的 20px */
   border: 1px solid mix(#000, $border-color, 10%);
   border-radius: $border-radius;
   transition: $global-transition;
