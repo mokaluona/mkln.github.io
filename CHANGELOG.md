@@ -16,6 +16,7 @@
     2. 改为恒定两列小卡（`4a81fd0`）——卡片被拉得又高又空、边框看着像没封口，废弃。
     3. **回到单列横排**：日期由简介下方改为**靠右下角**（`.friend-date { justify-self: end }`，桌面用 `$small` 断点覆盖回左对齐）；卡片上下内边距 `1em` → `1.5em`。桌面端两列布局未动。
        - 日期再往左挪 11px（`margin-right: 1em`），不再贴着内容右边缘。
+  - **站名改为对齐首页文章标题的渲染**：`.friend-name` 的字号取 `$h-size-2`（1.25em ≈ 20px，与 `h2` 同源）、字体 `$sans-serif-narrow`、bold、`line-height: initial`——都是从线上首页标题量出来的计算值，再映射回主题变量。默认状态保持 `$text-color` 深灰、无下划线；hover 才变成 `$link-color` + 下划线（即首页标题那个样子）。
   - `.friend-header` 在重构时已移除（卡片改为直接子元素，`grid-template-areas` 才认得）。
 - 文档：`待解决问题.md` 第 8 条（友链页硬伤）标记已完成（`487fd7b`）。
 

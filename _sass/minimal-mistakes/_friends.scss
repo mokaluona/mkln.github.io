@@ -82,10 +82,15 @@
   font-size: $type-size-4;
 }
 
+/* 站名：字号/字重/字体对齐首页文章标题（h2.archive__item-title）；
+   平时保持深灰无下划线，hover 才长成首页标题那样的链接色 + 下划线 */
 .friend-name {
   grid-area: name;
   align-self: center;
+  font-family: $sans-serif-narrow;
+  font-size: $h-size-2; /* 1.25em ≈ 20px，与首页标题同级 */
   font-weight: bold;
+  line-height: initial;
   color: $text-color;
   text-decoration: none;
 
@@ -98,7 +103,7 @@
   }
 
   &:hover {
-    color: $link-color-hover;
+    color: $link-color;
     text-decoration: underline;
   }
 }
